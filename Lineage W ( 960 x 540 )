@@ -1,0 +1,724 @@
+<!DOCTYPE >
+<html>
+<head>
+<title>CiS's W</title>
+<link rel="short icon" href="#">
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="top">
+    <label style= "font-size: 1.0em; color: rgb(190, 150, 255);"><b>CiS Artificial Intelligence Program! ( 960 x 540 )</b></label>
+    <div id="main">
+        <table>
+            <tr><div class="field-row"></tr>
+                <th><button id="connect" class="toggle" onclick="connect()">Connect</button></th>
+                <th><span onclick="hpmpsetting()" id="hpVal" style="width:75px; padding:3px;text-align: center;">100%</span></th>
+                <th><canvas id="hpImg" width="200px" height="6px"></canvas></th>
+            </div>
+            <tr><div class="field-row"></tr>
+                <th><button id="start" class="toggle" onclick="startCapture()">Start</button></th>
+                <th><span onclick="hpmpsetting()" id="mpVal" style="width:75px; padding:3px; text-align: center;">100%</span></th>
+                <th><canvas id="mpImg" width="200px" height="6px"></canvas></th>
+            </div>
+        </table>
+        
+        <table>
+            <tr>
+            <th colspan="2"><label style= "font-size: 1.0em; color: rgb(180, 250, 120);"><input type="checkbox" id="autohome_check" checked="true"><b>Home</b>&nbsp;&nbsp;&nbsp;</label></th>
+            <th><label><b>Max: </b></label> <input type="text" id="home_max" size = "1" value = "26"></th>
+            <th><label><b>Key: </b></label> <input type="text" id="home_key" size = "1" value = "8"> </th>
+            <th><label><b>Cool: </b></label> <input type="text" id="home_cool" size = "1" value = "22"></th>
+            </tr>
+            <tr>
+            <th><label style= "font-size: 1.0em; color: rgb(253, 255, 155);"><input type="checkbox" id="autoheal_check" checked="true"><b>Heal</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
+            <th><label style= "font-size: 1.0em; color: rgb(224, 70, 70);"><input type="checkbox" id="deathheal_check" checked="true"><b>Death</b></label></th>
+            <th><label><b>Max: </b></label> <input type="text" id="heal_max" size = "1" value = "90"></th>
+            <th><label><b>Key: </b></label> <input type="text" id="heal_key" size = "1" value = "2"></th>
+            <th><label><b>Cool: </b></label> <input type="text" id="heal_cool" size = "1" value = "0"></th>
+            </tr>
+            <tr>
+            <th><label style= "font-size: 1.0em; color: rgb(152, 220, 247);"><input type="checkbox" id="autotell_check" ><b>Tell</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
+            <th><label style= "font-size: 1.0em; color: rgb(152, 220, 247);"><input type="checkbox" id="selfimmune_check" checked="true"><b>Im</b></label></th>
+            <th><label><b>Max: </b></label> <input type="text" id="tell_max" size = "1" value = "50"></th>
+            <th><label><b>Key: </b></label> <input type="text" id="tell_key" size = "1" value = "7"> </th>
+            <th><label><b>Cool: </b></label> <input type="text" id="tell_cool" size = "1" value = "5"></th>
+            </tr>
+            <tr>
+            <th><label style= "font-size: 1.0em; color: rgb(255, 182, 140);"><b><input type="checkbox" id="portion1_check" >Portion</b></label> </th>
+            <th><label style= "font-size: 1.0em; color: rgb(152, 220, 247);"><input type="checkbox" id="qassist_check" ><b>Q</b></label></th>
+            <th><label><b>Max: </b></label> <input type="text" id="portion1_max" size = "1" value = "84"></th>
+            <th><label><b>Key: </b></label> <input type="text" id="portion1_key" size = "1" value = "6"></th>
+            <th><label><b>Cool: </b></label> <input type="text" id="portion1_cool" size = "1" value = "1"></th>
+            </tr>
+            <tr>
+            <th><label style= "font-size: 1.0em; color: rgb(255, 182, 140);"><input type="checkbox" id="portion2_check" ><b>Portion</b></label> </th>
+            <th><label style= "font-size: 1.0em; color: rgb(152, 220, 247);"><input type="checkbox" id="counterm_check" ><b>Count</b></label></th>        
+            <th><label><b>Max: </b></label> <input type="text" id="portion2_max" size = "1" value = "100"></th>
+            <th><label><b>Key: </b></label> <input type="text" id="portion2_key" size = "1" value = "g"> </th>
+            <th><label><b>Cool: </b></label> <input type="text" id="portion2_cool" size = "1" value = "0"></th>
+            </tr>
+            <tr>
+                <th colspan="2"><label style= "font-size: 1.0em; color: rgb(140, 186, 255);"><input type="checkbox" id="portion3_check" ><b>MPortion</b></label> </th>
+                <th><label onclick="portion3()" id="protion3_l"><b>Max: </b></label> <input type="text" id="portion3_max" size = "1" value = "50"></th>
+                <th><label><b>Key: </b></label> <input type="text" id="portion3_key" size = "1" value = "3"> </th>
+                <th><label><b>Cool: </b></label> <input type="text" id="portion3_cool" size = "1" value = "1"></th>
+                </tr>
+            <tr>
+            <th><label style= "font-size: 1.0em; color: rgb(250, 120, 120);"><input type="checkbox" id="pkaction_check" ><b>PK(e)</b>&nbsp;&nbsp;&nbsp;</label><br></th>
+            <th><label style= "font-size: 1.0em; color: rgb(250, 120, 120);"><input type="checkbox" id="pkyou_check" ><b>You</b>&nbsp;&nbsp;</label></th>
+            <th colspan="2"><label style= "font-size: 1.0em; color: rgb(152, 220, 247);"><input type="checkbox" id="pktell_check" ><b>Tell</b>&nbsp;&nbsp;</label> 
+            <label style= "font-size: 1.0em; color: rgb(152, 220, 247);"><input type="checkbox" id="pkmark_check" ><b>Mark</b></label></th>
+            </tr>
+            <tr>
+            <th><label style= "font-size: 1.0em; color: rgb(250, 120, 120);">&nbsp;&nbsp;<input type="checkbox" id="pkskill1_check" ><b>Skill(1)</b></label></th>
+            <th></th><th></th>
+            <th><label><b>Key: </b></label> <input type="text" id="pkskill1_key" size = "1" value = "1"> </th>
+            <th><label><b>Cool: </b></label> <input type="text" id="pkskill1_cool" size = "1" value = "1"> </th>
+            </tr>
+            <tr>
+            <th><label style= "font-size: 1.0em; color: rgb(250, 120, 120);">&nbsp;&nbsp;<input type="checkbox" id="pkskill2_check" ><b>Skill(2)</b></label></th>
+            <th></th><th></th>
+            <th><label><b>Key: </b></label> <input type="text" id="pkskill2_key" size = "1" value = "2"> </th>
+            <th><label><b>Cool: </b></label> <input type="text" id="pkskill2_cool" size = "1" value = "2"> </th>
+            </tr>
+            <tr>
+            <th><label style= "font-size: 1.0em; color: rgb(253, 255, 155);"><input type="checkbox" id="hp1heal_check" checked="true"><b id = hp1heal_l>1PHeal</b></label></th>
+            <th><label style= "font-size: 1.0em; color: rgb(206, 156, 247);"><input type="checkbox" id="hp1immune_check" ><b>1Im</b></label></th>
+            <th><label onclick="partyhpup()"><b>Max: </b></label> <input type="text" id="hp1heal_max" size = "1" value = "84"></th>
+            <th><label><b>Key: </b></label> <input type="text" id="hp1heal_key" size = "1" value = "F5"> </th>
+            <th><label><b>Cool: </b></label> <input type="text" id="hp1heal_cool" size = "1" value = "0"> </th>
+            </tr>
+            <tr>
+            <th><label style= "font-size: 1.0em; color: rgb(253, 255, 155);"><input type="checkbox" id="hp2heal_check" checked="true"><b id = hp2heal_l>2PHeal</b></label></th>
+            <th><label style= "font-size: 1.0em; color: rgb(206, 156, 247);"><input type="checkbox" id="hp2immune_check" ><b>2Im</b></label></th>
+            <th><label onclick="partyhp()"><b>Max: </b></label> <input type="text" id="hp2heal_max" size = "1" value = "84"></th>
+            <th><label><b>Key: </b></label> <input type="text" id="hp2heal_key" size = "1" value = "F6"> </th>
+            <th><label><b>Cool: </b></label> <input type="text" id="hp2heal_cool" size = "1" value = "0"> </th>
+            </tr>
+            <tr>
+            <th><label style= "font-size: 1.0em; color: rgb(253, 255, 155);"><input type="checkbox" id="hp3heal_check" checked="true"><b id = hp3heal_l>3PHeal</b></label></th>
+            <th><label style= "font-size: 1.0em; color: rgb(206, 156, 247);"><input type="checkbox" id="hp3immune_check" ><b>3Im</b></label></th>
+            <th><label onclick="partyhpdown()"><b>Max: </b></label> <input type="text" id="hp3heal_max" size = "1" value = "84"></th>
+            <th><label><b>Key: </b></label> <input type="text" id="hp3heal_key" size = "1" value = "F7"> </th>
+            <th><label><b>Cool: </b></label> <input type="text" id="hp3heal_cool" size = "1" value = "0"></th>
+            </tr>
+            <tr>
+            <th><label style= "font-size: 1.0em; color: rgb(206, 156, 247);"><input type="checkbox" id="immune_check" ><b>Immune</b></label></th> 
+            <th><label style= "font-size: 1.0em; color: rgb(206, 156, 247);"><input type="checkbox" id="tagetimmune_check" ><b>Taget</b></label></th>
+        </table>
+        <div id="partyhp" class="partyhp hide">
+            <span id="hp1Val" style="width:75px; padding:3px; text-align: center;">100%</span>
+            <canvas id="hp1Img" width="34px" height="2px"></canvas>
+            <span id="hp2Val" style="width:75px; padding:3px; text-align: center;">100%</span>
+            <canvas id="hp2Img" width="34px" height="2px"></canvas>
+            <span id="hp3Val" style="width:75px; padding:3px; text-align: center;">100%</span>
+            <canvas id="hp3Img" width="34px" height="2px"></canvas>
+        </div>
+        <div id="info"></div>
+        <div id="settinghpmp" class="settinghpmp hide" style="font-size: 80%;">
+            <table>
+                <tr>
+                <th><label><b>Hpx: </b></th><th><input type="text" id="hpxx" size="1" value="81"></th><th><label><b>Hpy: </b></th><th><input type="text" id="hpyy" size="1" value="27"></th>
+                <th><label><b>Hpw: </b></th><th><input type="text" id="hpww" size="1" value="178"></th><th><label><b>Hph: </b></th><th><input type="text" id="hphh" size="1" value="10"></th>
+                    <th rowspan="4" > <button onclick="videoshow()" size= "1" style="font-size: 16px; color: #0fa;">video</button></th>
+                <tr>           </tr>
+                <th><label><b>Mpx: </b></th><th><input type="text" id="mpxx" size="1" value="81"></th><th><label><b>Mpy: </b></th><th><input type="text" id="mpyy" size="1" value="40"></th>
+                <th><label><b>Mpw: </b></th><th><input type="text" id="mpww" size="1" value="165"></th><th><label><b>Mph: </b></th><th><input type="text" id="mphh" size="1" value="9"></th>
+                </tr>
+            </table>
+        </div>
+        <div style= "font-size: 0.8em; color: rgb(154, 228, 70);"> 노파티 쫄: 격수 클라이언트로 프로그램 실행(격수 피인식) 후 <br> 쫄 클라이언트 활성화 해두면 격수에게 힐을 합니다. </div>
+        <div id="settingvideo" class="settingvideo hide">
+            <video id="video" autoplay></video>
+        </div>
+    </div>
+</div>
+</body>
+
+<script defer src = "cData.js"></script>
+<script defer>
+    let port, writer, pkTarget, deathTarget, qaTarget, cmTarget;
+    let running = false;
+    let onpk = false;
+    let ondeath = false;
+    let oncm = false;
+    let onqa = false;
+    const encoder = new TextEncoder();
+    const video = document.querySelector("#video");
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const pkImg = new Image();
+    const deathImg = new Image();
+    const cmImg = new Image();
+    const qaImg = new Image();
+    
+    const cvReady = () => {
+        console.log("Opencv ready.");
+        pkImg.src = "data:image/png;base64,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"
+        setTimeout(() => {pkTarget = cv.imread(pkImg);}, 1000);    
+        deathImg.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAJsSURBVDhPXVJLTxNhFD0z7bTNQKdt2oZIqoQEJIgCiYnGKIWQaHz8AUPilqVxydKVbnSjGxeCMdGFJOJSfBAfoZCARtCYoIJplEdB2nRoZ6bzvN4Z3eiXTL5vZu45557zXdzu6qHHR47SqdYWUhSZOjIKjXS0kr8uHczRvliEREEgCKCoKFIuLBEmunspl1Uok26mbDpOgweyAaD05mWwD+3PUiohE4AA6BOEFkm/anoEjwjkeciGw8j8WEPpwV1sVSp4Xiig7LqIxSIwTYexgNDVkqDmkAjT8dBwPbTJUQynE2iXYyjqJmbKKr7rBuKShBADSqoOMZ+MY3p2AaczSQykFfTFm5AIh+CwuiKF0J9owkBKQT7ZjGeFBZzNZSD4fc+NjmDvy+c/0oIAgxVNbrUpxNwCAoKoyAe2cO7tR+D12JXA8P9rerDv7+nf9ejyKAljh9vo+qcing72YnhqBp5p4sXF8wizInOjziGcGZ/Extws7t28hvlqHeE1Nuuv96qGV0PHkIpIUDiYFPsp2w7WDQvR++NYWZzHvFrHSt2AuG1aAWiJXwrVGt7xU3GcwFepYeNrXceTqUksFYvYaVicsMsgZipvbmCdwev8ccu0odkuXDbvh1Fl8KpmBPFrjhsIiGUuupA/gV3Lgc4FOv/goYHMLUrsS2Pmn0zsE2pMwvFCNEwX33Z+oWrZsBnkc0UY0Hkyz2EgaFPldmsMEPgK/HDEW52HoBs2VK0Bk41rXLTN+/Ebd7DJXezx2eX7YQEePi9QFw2Wf9jdjx45DotnS+Wi5ZqG1eUPvOuo8X9/Li322SXJmGjvwW/xm39loLrAJwAAAABJRU5ErkJggg=="
+        setTimeout(() => {deathTarget = cv.imread(deathImg);}, 1000);    
+        cmImg.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAMCAYAAABx290PAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAJdEVYdEF1dGhvcgBKbzwwK4EAAAAgdEVYdENyZWF0aW9uVGltZQAyMDIyOjA4OjMxIDA3OjAwOjA2atcpyQAAACF0RVh0Q3JlYXRpb24gVGltZQAyMDIyOjA4OjMxIDA3OjAwOjA24lhKDwAAAzdJREFUOE91VNty2zYQPQBBgqQuTiTFcmLHno5TW5mkST6xH9Vp/6BT/0Hz1s70XkeiRIl3Ej0LVxm/BMMdECC4u+fswaqXT2JnA4XxKIEbWuhggFEaSjko7RCGIeI4hrUWaRRhGDoMnYNTAwJloI1CZCxMFCDf7gH+c9yXeUAP1wONC2Anz6FeTIw7ffYU589PYSMNw+BGg4NOnYPW2gcLwwBNmUM+BUHgTSn1+Yys+56eOWT/+E1M9hsX4j43DDjV7t03r7G6ufYB+75FGBgkaewdNU3lf7IMqIeejrVHHBGtOOq6zq+n06ln43Ew+d62rbemJ9rwFOpqHrr3797g9e017n760VNWloX/YTQacT2grmsiZ0BHghhAxmOEYpLccS3jOMuQ/R5kaXIG9Wpp3QcGXN18je9/+I5BEmRZhqLqMJtN/A/36xwsGakOaaSFDiQRmSWwDAkg6y+NgbqoBia1Oovd2ze3uLl9hbu7O6xWNwhMhI5orq6+go1TbLdbBJoUtsDJ+IlHI0mt12tPl6wf2xG9r13TeIYaMnNoawQvTqJvF4s5FvMZfv74ERcXL5EkI5RVi7Lr8e+nDX7/8x9kuwN++fU3ZPkBu0PBOUdRN9BhhJjU2zQlbayfYR2NgdMBUQmVismTAb7HqYW2FEGoKW0KBYPjo2AZMB1PiNRSPFMszy5wTrTXpH2+nCNMeFXGFMpsimSSoFc99tUeURrBxKQ8JLV0F9gA6TTF7HSG5fkSF5fncl1IAWkQhSVJ4imq285bts2xznKiKYj0HmVbYHtYY1ds0LqKjlnH/83EClV34Jm9N3lvhhL0BBdQaEYUTUY+q4y1lytx2O9QU6VSB5G+JJGSLqmN4plQsuaVsURJSlDVB+8o4r7hBZY5SdgkRmSHs6x9E+Ht15y10ENfaFnYgFKcjBN2kooCqRDSQd936PrGJyUdRpHygohTimlzv2E5DI11o4r7usMkHqHalzhJJ+iog2kyRlcwIYqu3BNhUZbM1PnW9NAphodMaPLO68sgD3eJXQs5KV4sFsg+Zbi8vOQ5g4o+CgaxFJC0N2kcf/3xN0YJFb7ZgRjZpSrqJMJ/jfyV61GEu8sAAAAASUVORK5CYII="
+        setTimeout(() => {cmTarget = cv.imread(cmImg);}, 1000);    
+        qaImg.src = "data:image/png;base64,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"
+        setTimeout(() => {qaTarget = cv.imread(qaImg);}, 1000);
+    }
+
+    const videoshow  = () => {
+        if (document.querySelector("#settingvideo").classList.value.includes("hide")) {
+            document.querySelector("#settingvideo").classList.remove("hide");
+        } else {
+            document.querySelector("#settingvideo").classList.add("hide");
+        }   
+    }
+
+    const hpmpsetting = () => {
+        if (document.querySelector("#settinghpmp").classList.value.includes("hide")) {
+            document.querySelector("#settinghpmp").classList.remove("hide");
+            document.querySelector("#partyhp").classList.remove("hide");
+        } else {
+            document.querySelector("#settinghpmp").classList.add("hide");
+            document.querySelector("#partyhp").classList.add("hide");
+            document.querySelector("#settingvideo").classList.add("hide");
+        }   
+    }
+
+    const partyhpup = () =>{
+        document.querySelector("#hp1heal_max").value = `88`;
+        document.querySelector("#hp2heal_max").value = `88`;
+        document.querySelector("#hp3heal_max").value = `88`;
+    }
+    const partyhp = () =>{
+        document.querySelector("#hp1heal_max").value = `84`;
+        document.querySelector("#hp2heal_max").value = `84`;
+        document.querySelector("#hp3heal_max").value = `84`;
+    }
+    const partyhpdown = () =>{
+        document.querySelector("#hp1heal_max").value = `80`;
+        document.querySelector("#hp2heal_max").value = `80`;
+        document.querySelector("#hp3heal_max").value = `80`;
+    }
+
+    const send = (data) => {
+        console.log("Send: " + data);
+        const dataArrayBuffer = encoder.encode(data);
+        writer.write(dataArrayBuffer);
+    }
+    
+    const connect = async () => {
+        try {
+            port = await navigator.serial.requestPort();
+            await port.open({ baudRate: 9600 });
+            reader = port.readable.getReader();
+            writer = port.writable.getWriter();
+            console.log("Connected Arduino.");
+            document.querySelector("#connect").classList.add("on");
+        } catch (err) {
+            // alert(err);
+            console.error("Error: " + err);
+            document.querySelector("#connect").classList.remove("on");
+        }
+    }
+
+    const startCapture = async () => {
+        if (document.querySelector("#connect").classList.value.includes("on")) {
+            running = true;
+            document.querySelector("#start").classList.add("on");
+            video.srcObject = await navigator.mediaDevices.getDisplayMedia({
+                video: { cursor: "always", frameRate: { ideal: 5, max: 5 } },
+                audio: false,
+            });
+            console.log("capture start.");
+            setTimeout(captureLoop, 1000);
+        }
+        else {
+            console.log("Connect Arduino Plese.");
+            alert("Connect Arduino Plese.");
+        }
+    }
+
+    const stopCapture = () => {
+        running = false;
+        document.querySelector("#start").classList.remove("on");
+        const tracks = video.srcObject.getTracks();
+        tracks.forEach(track => track.stop());
+        video.srcObject = null;
+    }
+
+    const captureLoop = () => {
+        //video 이미지를 960x540으로 불러오기
+        const canvasFull = document.createElement("canvas");
+        const ctxFull = canvasFull.getContext("2d");
+        canvasFull.width = video.videoWidth;
+        canvasFull.height = video.videoHeight;
+        ctxFull.drawImage(video, 0, 0, canvasFull.width, canvasFull.height, 0, 0, 960, 540);
+        
+        //960x540 이미지에서 필요한 부분 잘라오기
+        canvas.width = document.getElementById('hpww').value;
+        canvas.height = document.getElementById('hphh').value;
+        ctx.drawImage(canvasFull, document.getElementById('hpxx').value, document.getElementById('hpyy').value, document.getElementById('hpww').value, document.getElementById('hphh').value, 0, 0, document.getElementById('hpww').value, document.getElementById('hphh').value);
+        const hpImg = cv.imread(canvas);
+        cv.imshow("hpImg", hpImg);
+
+        //HP Red 값만 추출하기
+        const hpImgPlanes = new cv.MatVector();
+        cv.split(hpImg, hpImgPlanes);
+        const hpRed = hpImgPlanes.get(0);
+
+        //HP 블러 처리하기
+        const hpBlur = new cv.Mat();
+        const ksize = new cv.Size(5, 5);
+        const anchor = new cv.Point(-1, -1)
+        cv.blur(hpRed, hpBlur, ksize, anchor, cv.BORDER_DEFAULT);
+        
+        //HP 임계 처리하기
+        const hpThres = new cv.Mat();
+        cv.threshold(hpBlur, hpThres, 210, 255, cv.THRESH_BINARY);
+
+        //HP 계산하기
+        const hpData1D = [];
+        const hpData2D = [];
+        const hpMaxAry = [];
+
+        //HP cv.Mat 데이터를 JS array로 가져오기
+        hpThres.data.forEach(value => hpData1D.push(value));
+
+        //HP 1차원 데이터를 2차원(x, y)으로 분리하기
+        while (hpData1D.length) hpData2D.push(hpData1D.splice(0, hpThres.size().width));
+
+        //배열을 뒤집어서 255값 찾아 배열에 넣기 (우->좌 방향으로 255값 찾기)
+        for (i = 0; i < hpData2D.length; i++) {
+            // 수정. indexOf에서 값이 검출되지 않으면 -1. Min값을 찾기 때문에 오류 발생하여 수정
+            const idx = hpData2D[i].reverse().indexOf(255);
+            const value = idx < 0 ? hpImg.size().width : idx;
+            hpMaxAry.push(value);        }
+
+        //hpMaxAry의 가장 작은값 찾아 HP비율로 계산
+        const hpMinIdx = Math.min.apply(null, hpMaxAry) < 0 ? 0 : Math.min.apply(null, hpMaxAry);
+        const hpRatio = Math.round((hpThres.size().width - hpMinIdx) / hpThres.size().width * 100) == 0 ? 100 : Math.round((hpThres.size().width - hpMinIdx) / hpThres.size().width * 100);
+
+        //960x540 이미지에서 MP 부분 잘라오기
+        canvas.width = document.getElementById('mpww').value;
+        canvas.height = document.getElementById('mphh').value;
+        ctx.drawImage(canvasFull, document.getElementById('mpxx').value, document.getElementById('mpyy').value, document.getElementById('mpww').value, document.getElementById('mphh').value, 0, 0, document.getElementById('mpww').value, document.getElementById('mphh').value);
+        const mpImg = cv.imread(canvas);
+        cv.imshow("mpImg", mpImg);
+
+        //MP Blue 값만 추출하기
+        const mpLow = new cv.Mat(mpImg.rows, mpImg.cols, mpImg.type(), [60, 110, 125, 0]);
+        const mphigh = new cv.Mat(mpImg.rows, mpImg.cols, mpImg.type(), [120, 200, 200, 255]);
+        const mpBlue = new cv.Mat();
+        cv.inRange(mpImg, mpLow, mphigh, mpBlue);
+
+        //MP 계산하기
+        const mpData1D = [];
+        const mpData2D = [];
+        const mpMaxary = [];
+
+        //MP cv.Mat 데이터를 JS array로 가져오기
+        mpBlue.data.forEach(value => mpData1D.push(value));
+
+        //MP 1차원 데이터를 2차원(x, y)으로 분리하기
+        while (mpData1D.length) mpData2D.push(mpData1D.splice(0, mpBlue.size().width));
+
+        //배열을 뒤집어서 255값 찾아 배열에 넣기 (우->좌 방향으로 255값 찾기)
+        for (i = 0; i < mpData2D.length; i++) {
+            // fix. indexOf에서 값이 검출되지 않으면 -1. Min값을 찾기 때문에 오류 발생하여 수정
+            const idx = mpData2D[i].reverse().indexOf(255);
+            const value = idx < 0 ? mpImg.size().width : idx;
+            mpMaxary.push(value);        }
+
+        //mpMaxAry의 가장 작은값 찾아 HP비율로 계산
+        const mpMinIdx = Math.min.apply(null, mpMaxary) < 0 ? 0 : Math.min.apply(null, mpMaxary);
+        const mpRatio = Math.round((mpBlue.size().width - mpMinIdx) / mpBlue.size().width * 100) == 0 ? 100 : Math.round((mpBlue.size().width - mpMinIdx) / mpBlue.size().width * 100);
+
+
+        canvas.width = 25;
+        canvas.height = 3;
+        ctx.drawImage(canvasFull, 442, 435, 25, 3, 0, 0, 25, 3);
+        const hp1Img = cv.imread(canvas);
+        cv.imshow("hp1Img", hp1Img);
+        const hp1ImgPlanes = new cv.MatVector();
+        cv.split(hp1Img, hp1ImgPlanes);
+        const hp1Red = hp1ImgPlanes.get(0);
+        const hp1Blur = new cv.Mat();
+        const k1size = new cv.Size(5, 5);
+        const anchor1 = new cv.Point(-1, -1)
+        cv.blur(hp1Red, hp1Blur, k1size, anchor1, cv.BORDER_DEFAULT);
+        const hp1Thres = new cv.Mat();
+        cv.threshold(hp1Blur, hp1Thres, 100, 255, cv.THRESH_BINARY);
+        const hp1Data1D = [];
+        const hp1Data2D = [];
+        const hp1MaxAry = [];
+        hp1Thres.data.forEach(value => hp1Data1D.push(value));
+        while (hp1Data1D.length) hp1Data2D.push(hp1Data1D.splice(0, hp1Thres.size().width));
+        for (i = 0; i < hp1Data2D.length; i++) {
+            const idx = hp1Data2D[i].reverse().indexOf(255);
+            const value = idx < 0 ? hp1Img.size().width : idx;
+            hp1MaxAry.push(value);        }
+        const hp1MinIdx = Math.min.apply(null, hp1MaxAry) < 0 ? 0 : Math.min.apply(null, hp1MaxAry);
+        let hp1Ratio = Math.round((hp1Thres.size().width - hp1MinIdx) / hp1Thres.size().width * 100) == 0 ? 100 : Math.round((hp1Thres.size().width - hp1MinIdx) / hp1Thres.size().width * 100);
+        if ($("input:checkbox[id='hp1heal_check']").is(":checked") == true){
+            document.querySelector("#hp1heal_l").innerHTML = `1P${hp1Ratio}%`;            } 
+            else {hp1Ratio = 100; document.querySelector("#hp1heal_l").innerHTML = `1PHeal`;}
+        canvas.width = 25;
+        canvas.height = 3;
+        ctx.drawImage(canvasFull, 497, 435, 25, 3, 0, 0, 25, 3);
+        const hp2Img = cv.imread(canvas);
+        cv.imshow("hp2Img", hp2Img);
+        const hp2ImgPlanes = new cv.MatVector();
+        cv.split(hp2Img, hp2ImgPlanes);
+        const hp2Red = hp2ImgPlanes.get(0);
+        const hp2Blur = new cv.Mat();
+        const k2size = new cv.Size(5, 5);
+        const anchor2 = new cv.Point(-1, -1)
+        cv.blur(hp2Red, hp2Blur, k2size, anchor2, cv.BORDER_DEFAULT);
+        const hp2Thres = new cv.Mat();
+        cv.threshold(hp2Blur, hp2Thres, 100, 255, cv.THRESH_BINARY);
+        const hp2Data1D = [];
+        const hp2Data2D = [];
+        const hp2MaxAry = [];
+        hp2Thres.data.forEach(value => hp2Data1D.push(value));
+        while (hp2Data1D.length) hp2Data2D.push(hp2Data1D.splice(0, hp2Thres.size().width));
+        for (i = 0; i < hp2Data2D.length; i++) {
+            const idx = hp2Data2D[i].reverse().indexOf(255);
+            const value = idx < 0 ? hp2Img.size().width : idx;
+            hp2MaxAry.push(value);        }
+        const hp2MinIdx = Math.min.apply(null, hp2MaxAry) < 0 ? 0 : Math.min.apply(null, hp2MaxAry);
+        let hp2Ratio = Math.round((hp2Thres.size().width - hp2MinIdx) / hp2Thres.size().width * 100) == 0 ? 100 : Math.round((hp2Thres.size().width - hp2MinIdx) / hp2Thres.size().width * 100);
+        if ($("input:checkbox[id='hp2heal_check']").is(":checked") == true){
+            document.querySelector("#hp2heal_l").innerHTML = `2P${hp2Ratio}%`;            } 
+            else {hp2Ratio = 100; document.querySelector("#hp2heal_l").innerHTML = `2PHeal`;}
+        canvas.width = 25;
+        canvas.height = 3;
+        ctx.drawImage(canvasFull, 553, 435, 25, 3, 0, 0, 25, 3);
+        const hp3Img = cv.imread(canvas);
+        cv.imshow("hp3Img", hp3Img);
+        const hp3ImgPlanes = new cv.MatVector();
+        cv.split(hp3Img, hp3ImgPlanes);
+        const hp3Red = hp3ImgPlanes.get(0);
+        const hp3Blur = new cv.Mat();
+        const k3size = new cv.Size(5, 5);
+        const anchor3 = new cv.Point(-1, -1)
+        cv.blur(hp3Red, hp3Blur, k3size, anchor3, cv.BORDER_DEFAULT);
+        const hp3Thres = new cv.Mat();
+        cv.threshold(hp3Blur, hp3Thres, 100, 255, cv.THRESH_BINARY);
+        const hp3Data1D = [];
+        const hp3Data2D = [];
+        const hp3MaxAry = [];
+        hp3Thres.data.forEach(value => hp3Data1D.push(value));
+        while (hp3Data1D.length) hp3Data2D.push(hp3Data1D.splice(0, hp3Thres.size().width));
+        for (i = 0; i < hp3Data2D.length; i++) {
+            const idx = hp3Data2D[i].reverse().indexOf(255);
+            const value = idx < 0 ? hp3Img.size().width : idx;
+            hp3MaxAry.push(value);        }
+        const hp3MinIdx = Math.min.apply(null, hp3MaxAry) < 0 ? 0 : Math.min.apply(null, hp3MaxAry);
+        let hp3Ratio = Math.round((hp3Thres.size().width - hp3MinIdx) / hp3Thres.size().width * 100) == 0 ? 100 : Math.round((hp3Thres.size().width - hp3MinIdx) / hp3Thres.size().width * 100);
+        if ($("input:checkbox[id='hp3heal_check']").is(":checked") == true){
+            document.querySelector("#hp3heal_l").innerHTML = `3P${hp3Ratio}%`;            } 
+            else {hp3Ratio = 100; document.querySelector("#hp3heal_l").innerHTML = `3PHeal`;}
+
+        document.querySelector("#hpVal").innerHTML = `${hpRatio}%`;
+        document.querySelector("#mpVal").innerHTML = `${mpRatio}%`;
+        document.querySelector("#hp1Val").innerHTML = `[1P]${hp1Ratio}%`;
+        document.querySelector("#hp2Val").innerHTML = `[2P]${hp2Ratio}%`;
+        document.querySelector("#hp3Val").innerHTML = `[3P]${hp3Ratio}%`;
+        if (running) {
+            if ($("input:checkbox[id='autohome_check']").is(":checked") == true ){
+                if (hpRatio >= 1 && hpRatio <= document.getElementById('home_max').value && inCool.homeincool == false) {
+                    console.log("home.");
+                    for (i = 0; i < 3; i++) {
+                        setTimeout(() => {
+                            send(document.getElementById('home_key').value);
+                        }, 0.5 * i * 1000);
+                    }
+                    inCool.homeincool = true;
+                    setTimeout(() => {
+                        inCool.homeincool = false;    
+                    }, document.getElementById('home_cool').value * 1000);
+                }
+            }
+            if ($("input:checkbox[id='autoheal_check']").is(":checked") == true && inCool.promisecool == false){
+                if (hpRatio >= document.getElementById('home_max').value - 10 && hpRatio <= document.getElementById('heal_max').value && inCool.healincool == false) {
+                    console.log("heal.");
+                    send(document.getElementById('heal_key').value);
+                    inCool.healincool = true;
+                    setTimeout(() => {
+                        inCool.healincool = false;
+                    }, (document.getElementById('heal_cool').value = 0 ? 0.2: document.getElementById('heal_cool').value) * 1000);
+                }
+            }
+            if ($("input:checkbox[id='autotell_check']").is(":checked") == true && $("input:checkbox[id='selfimmune_check']").is(":checked") == false){
+                if (hpRatio >= document.getElementById('home_max').value - 10 && hpRatio <= document.getElementById('tell_max').value && inCool.tellincool == false) {
+                    console.log("tell.");
+                    send(document.getElementById('tell_key').value);
+                    inCool.tellincool = true;
+                    setTimeout(() => {
+                        inCool.tellincool = false;
+                    }, document.getElementById('tell_cool').value * 1000);
+                }
+            }
+            if ($("input:checkbox[id='selfimmune_check']").is(":checked") == true){
+                if (hpRatio >= document.getElementById('home_max').value - 10 && hpRatio <= document.getElementById('tell_max').value && inCool.selfimmuneincool == false) {
+                    console.log("Self Immune.");
+                    for (i = 0; i < 3; i++) {
+                        setTimeout(() => {
+                            send('3');
+                        }, 0.2 * i * 1000);
+                    }
+                    inCool.selfimmuneincool = true;
+                    setTimeout(() => {
+                        inCool.selfimmuneincool = false;
+                    }, 30.5 * 1000);
+                }
+            }
+            if ($("input:checkbox[id='pkaction_check']").is(":checked") == true || $("input:checkbox[id='pkyou_check']").is(":checked") == true || $("input:checkbox[id='pktell_check']").is(":checked") == true){
+            canvas.width = 25; canvas.height = 25; ctx.drawImage(canvasFull, 1057, 533, 25, 25, 0, 0, 25, 25);
+            const pkImg = cv.imread(canvas);
+            const pkResult = new cv.Mat();
+            const pkMask = new cv.Mat();
+            cv.matchTemplate(pkTarget, pkImg, pkResult, cv.TM_CCOEFF, pkMask);
+            const pkRoc = cv.minMaxLoc(pkResult, pkMask);
+            if (Math.round(pkRoc.maxVal) >= 1200000) {
+                console.log("PK action image.");
+                onpk = true;
+            } else {
+                onpk = false;
+            }
+            pkImg.delete(); pkResult.delete(); pkMask.delete();
+            }
+            if ((onpk) && $("input:checkbox[id='pkyou_check']").is(":checked") == true && inCool.pkyouincool == false){
+                for (i = 0 ; i < 75; i++) { 
+                    inCool.promisecool = true;
+                    setTimeout(() => {
+                        inCool.promisecool = false;
+                    }, 1.2 * 1000);
+                    if (i < 3){
+                        setTimeout(() => {
+                            send(3)
+                        }, 0.3 * i * 1000);}
+                    if (i !=0 && i % 10 == 0){
+                        setTimeout(() => {
+                            send('4')
+                        }, 0.4 * i * 1000);}
+                    if (i % 10 != 0 && i < 75 ){
+                        setTimeout(() => {
+                            send('1')
+                        }, 0.4 * i * 1000);}
+                }
+                inCool.pkyouincool = true;
+                setTimeout(() => {
+                    inCool.pkyouincool = false;    
+                }, 30.5 * 1000);
+            }
+            if ((onpk) && $("input:checkbox[id='pktell_check']").is(":checked") == true && inCool.tellincool == false){
+                console.log("PK Tell.");
+                send(document.getElementById('tell_key').value);
+                inCool.tellincool = true;
+                setTimeout(() => {
+                    inCool.tellincool = false;
+                }, document.getElementById('tell_cool').value * 1000);
+            }
+            if ((onpk) && $("input:checkbox[id='pkaction_check']").is(":checked") == true && inCool.promisecool == false){
+                if (inCool.pkactionincool == false){
+                    console.log("action pK.");
+                    send("e"); 
+                    inCool.pkactionincool = true;
+                    setTimeout(() => {
+                        inCool.pkactionincool = false;
+                    }, 3 * 1000);
+                }
+                if ($("input:checkbox[id='pkskill1_check']").is(":checked") == true && inCool.pkskill1incool == false){
+                    setTimeout(() => send(document.getElementById('pkskill1_key').value), 0.4 * i * 1000);
+                    inCool.pkskill1incool = true;
+                    setTimeout(() => {
+                        inCool.pkskill1incool = false;
+                    }, document.getElementById('pkskill1_cool').value * 1000);
+                }
+                if ($("input:checkbox[id='pkskill2_check']").is(":checked") == true && inCool.pkskill2incool == false){
+                    setTimeout(() => send(document.getElementById('pkskill2_key').value), 0.4 * i * 1000);
+                    inCool.pkskill2incool = true;
+                    setTimeout(() => {
+                        inCool.pkskill2incool = false;
+                    },document.getElementById('pkskill2_cool').value * 1000);
+                }
+            }
+            if ($("input:checkbox[id='deathheal_check']").is(":checked") == true && inCool.promisecool == false){
+                canvas.width = 60; canvas.height = 30; ctx.drawImage(canvasFull, 200, 180, 60, 30, 0, 0, 60, 30);
+                const deathImg = cv.imread(canvas);
+                const deathResult = new cv.Mat();
+                const deathMask = new cv.Mat();
+                cv.matchTemplate(deathTarget, deathImg, deathResult, cv.TM_CCOEFF, deathMask);
+                const deathRoc = cv.minMaxLoc(deathResult, deathMask);
+                if (Math.round(deathRoc.maxVal) >= 1200000) {
+                    console.log("death action image.");
+                    ondeath = true;
+                } else {
+                    ondeath = false;
+                }
+                if ((ondeath = false) && inCool.deathincool == false){
+                    hp1Ratio = '100';
+                    hp2Ratio = '100';
+                    hp3Ratio = '100';
+                    inCool.deathincool = true;
+                    setTimeout(() => {
+                        inCool.deathincool = false;
+                    }, 3 * 1000);
+                }
+                deathImg.delete(); deathResult.delete(); deathMask.delete();
+            } 
+            if ($("input:checkbox[id='hp1heal_check']").is(":checked") == true && inCool.promisecool == false && inCool.healincool == false){
+                if (hp1Ratio >= 1 && hp1Ratio <= document.getElementById('hp1heal_max').value && Math.min(hp1Ratio, hp2Ratio, hp3Ratio) == hp1Ratio  && inCool.healpincool == false) {
+                    send(document.getElementById('hp1heal_key').value);
+                    inCool.healpincool = true;
+                    setTimeout(() => {
+                        inCool.healpincool = false;
+                    }, document.getElementById('hp1heal_cool').value * 1000);
+                }
+            }
+            if ($("input:checkbox[id='hp2heal_check']").is(":checked") == true && inCool.promisecool == false && inCool.healincool == false){
+                if (hp2Ratio >= 1 && hp2Ratio <= document.getElementById('hp2heal_max').value && Math.min(hp1Ratio, hp2Ratio, hp3Ratio) == hp2Ratio && inCool.healpincool == false) {
+                    send(document.getElementById('hp2heal_key').value);
+                    inCool.healpincool = true;
+                    setTimeout(() => {
+                        inCool.healpincool = false;
+                    }, document.getElementById('hp2heal_cool').value * 1000);
+                }
+            }
+            if ($("input:checkbox[id='hp3heal_check']").is(":checked") == true && inCool.promisecool == false && inCool.healincool == false){
+                if (hp3Ratio >= 1 && hp3Ratio <= document.getElementById('hp3heal_max').value && Math.min(hp1Ratio, hp2Ratio, hp3Ratio) == hp3Ratio && inCool.healpincool == false) {
+                    send(document.getElementById('hp3heal_key').value);
+                    inCool.healpincool = true;
+                    setTimeout(() => {
+                        inCool.healpincool = false;
+                    }, document.getElementById('hp3heal_cool').value * 1000);
+                }
+            }
+            if ($("input:checkbox[id='immune_check']").is(":checked") == true && (($("input:checkbox[id='hp1immune_check']").is(":checked") == true) || ($("input:checkbox[id='hp2immune_check']").is(":checked") == true) || ($("input:checkbox[id='hp3immune_check']").is(":checked") == true) || ($("input:checkbox[id='tagetimmune_check']").is(":checked") == true))){
+                if (inCool.immuneincool == false) {
+                    console.log("immune.");
+                    for (i = 0 ; i < 30; i++) { 
+                        if (i < 1){
+                            setTimeout(() => {
+                                send(3)
+                            }, 0.4 * i * 1000);}
+                        j = 2;
+                        if (i >= j && i < j+3 && $("input:checkbox[id='hp1immune_check']").is(":checked") == true){
+                            setTimeout(() => {
+                                send(document.getElementById('hp1heal_key').value)
+                            }, 0.4 * i * 1000);}
+                        j = $("input:checkbox[id='hp1immune_check']").is(":checked") == true ? j+3 : j ;
+                        if (i >= j && i < j+3 && $("input:checkbox[id='hp2immune_check']").is(":checked") == true){
+                            setTimeout(() => {
+                                send(document.getElementById('hp2heal_key').value)
+                            }, 0.4 * i * 1000);}
+                        j = $("input:checkbox[id='hp2immune_check']").is(":checked") == true ? j+3 : j ;
+                        if (i >= j && i < j+3 && $("input:checkbox[id='hp3immune_check']").is(":checked") == true){
+                            setTimeout(() => {
+                                send(document.getElementById('hp3heal_key').value)
+                            }, 0.4 * i * 1000);}
+                        j = $("input:checkbox[id='hp3immune_check']").is(":checked") == true ? j+3 : j ;
+                        if (i >= j && i < j+3 && $("input:checkbox[id='tagetimmune_check']").is(":checked") == true){
+                            setTimeout(() => {
+                                send('\\')
+                            }, 0.4 * i * 1000);}
+                        j = $("input:checkbox[id='tagetimmune_check']").is(":checked") == true ? j+3 : j ;
+                        if (i >= j+1 && i < j+2){
+                            setTimeout(() => {
+                                send(document.getElementById('heal_key').value);
+                            }, 0.4 * i * 1000);}
+                    }
+                    inCool.promisecool = true;
+                    inCool.immuneincool = true;
+                    setTimeout(() => {
+                        inCool.promisecool = false;
+                    }, (j+1) * 0.4 * 1000);
+                    setTimeout(() => {
+                        inCool.immuneincool = false;    
+                    }, 30.5 * 1000);
+                }
+            }
+            if ($("input:checkbox[id='portion1_check']").is(":checked") == true){
+                if (hpRatio >= document.getElementById('home_max').value - 10 && hpRatio <= document.getElementById('portion1_max').value && inCool.portion1incool == false) {
+                    send(document.getElementById('portion1_key').value);
+                    inCool.portion1incool = true;
+                    setTimeout(() => {
+                        inCool.portion1incool = false;
+                    }, document.getElementById('portion1_cool').value * 1000);
+                }
+            }
+            if ($("input:checkbox[id='portion2_check']").is(":checked") == true){
+                if (hpRatio >= document.getElementById('home_max').value - 10 && hpRatio <= document.getElementById('portion2_max').value && inCool.portion2incool == false) {
+                    send(document.getElementById('portion2_key').value);
+                    inCool.portion2incool = true;
+                    setTimeout(() => {
+                        inCool.portion2incool = false;
+                    }, document.getElementById('portion2_cool').value * 1000);
+                }
+            }
+            if ($("input:checkbox[id='portion3_check']").is(":checked") == true){
+                if (mpRatio >= document.getElementById('home_max').value - 10 && mpRatio <= document.getElementById('portion3_max').value && inCool.portion3incool == false) {
+                    send(document.getElementById('portion3_key').value);
+                    inCool.portion3incool = true;
+                    setTimeout(() => {
+                        inCool.portion3incool = false;
+                    }, document.getElementById('portion3_cool').value * 1000);
+                }
+            }
+            if ($("input:checkbox[id='counterm_check']").is(":checked") == true && inCool.promisecool == false){
+                canvas.width = 30; canvas.height = 30; ctx.drawImage(canvasFull, 815, 634, 30, 30, 0, 0, 30, 30);
+                const cmImg = cv.imread(canvas);
+                const cmResult = new cv.Mat();
+                const cmMask = new cv.Mat();
+                cv.matchTemplate(cmTarget, cmImg, cmResult, cv.TM_CCORR, cmMask);
+                const cmRoc = cv.minMaxLoc(cmResult, cmMask);
+                if (Math.round(cmRoc.maxVal) >= 35470000) {
+                    console.log("Counter Magis image.");
+                    oncm = true;
+                } else {
+                    oncm = false;
+                }
+                if ((oncm == false) && inCool.countermincool == false){
+                    send("3"); 
+                    inCool.countermincool = true;
+                    setTimeout(() => {
+                        inCool.countermincool = false;
+                    }, 0.5 * 1000);
+                }
+                cmImg.delete(); cmResult.delete(); cmMask.delete();
+            }
+            if ($("input:checkbox[id='qassist_check']").is(":checked") == true && inCool.promisecool == false){
+                canvas.width = 33; canvas.height = 33; ctx.drawImage(canvasFull, 993, 516, 33, 33, 0, 0, 33, 33);
+                const qaImg = cv.imread(canvas);
+                const qaResult = new cv.Mat();
+                const qaMask = new cv.Mat();
+                cv.matchTemplate(qaTarget, qaImg, qaResult, cv.TM_CCOEFF, qaMask);
+                const qaRoc = cv.minMaxLoc(qaResult, qaMask);
+                if (Math.round(qaRoc.maxVal) >= 1250000) {
+                    console.log("Q assist image.");
+                    onqa = true;
+                } else {
+                    onqa = false;
+                }
+                if ((onqa = true) && inCool.qassistincool == false){
+                    send("q"); 
+                    inCool.qassistincool = true;
+                    setTimeout(() => {
+                        inCool.qassistincool = false;
+                    }, 0.5 * 1000);
+                }
+                qaImg.delete(); qaResult.delete(); qaMask.delete();
+            }           
+
+        }
+        hpImg.delete(); hpImgPlanes.delete(); hpRed.delete(); hpBlur.delete(); hpThres.delete();
+        mpLow.delete(); mphigh.delete(); mpBlue.delete(); mpImg.delete();
+        hp1Img.delete(); hp1ImgPlanes.delete(); hp1Red.delete(); hp1Blur.delete(); hp1Thres.delete();
+        hp2Img.delete(); hp2ImgPlanes.delete(); hp2Red.delete(); hp2Blur.delete(); hp2Thres.delete();
+        hp3Img.delete(); hp3ImgPlanes.delete(); hp3Red.delete(); hp3Blur.delete(); hp3Thres.delete();
+        setTimeout(captureLoop, 100);
+    }
+</script>
+<script src="./jquery-3.6.1.min.js" type="text/javascript"></script>
+<script async src="./opencv.js" onload="cvReady()" type="text/javascript"></script>
+</html>
